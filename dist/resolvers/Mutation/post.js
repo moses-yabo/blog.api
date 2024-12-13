@@ -178,7 +178,7 @@ exports.postResolvers = {
             }),
         };
     }),
-    postUnpublish: (_1, _a, _b) => __awaiter(void 0, [_1, _a, _b], void 0, function* (_, { postId }, { prisma, userInfo }) {
+    postUnPublish: (_1, _a, _b) => __awaiter(void 0, [_1, _a, _b], void 0, function* (_, { postId }, { prisma, userInfo }) {
         if (!userInfo) {
             return {
                 userErrors: [

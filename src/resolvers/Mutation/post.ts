@@ -194,7 +194,7 @@ export const postResolvers  = {
       }),
     };
   },
-  postUnpublish: async (
+  postUnPublish: async (
     _: any,
     { postId }: { postId: string },
     { prisma, userInfo }: Context
