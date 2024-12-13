@@ -9,8 +9,8 @@ type Mutation {
     postCreate(post:PostInput!):PostPayload!
     postUpdate(postId:ID! , post:PostInput!) :PostPayload!
     postDelete(postId:ID!):PostPayload!
-    postPublish(postId:ID!):PostPayload!
-    postUnPublish(postId:ID!):PostPayload!
+    postPublish(postId: ID!): PostPayload!
+    postUnpublish(postId: ID!): PostPayload!
     signup(credentials:CredentialsInput!,name:String,bio:String!):AuthPayload!
     signin(credentials:CredentialsInput!):AuthPayload!
   }

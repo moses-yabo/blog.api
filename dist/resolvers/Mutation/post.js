@@ -148,4 +148,64 @@ exports.postResolvers = {
             post
         };
     }),
+    postPublish: (_1, _a, _b) => __awaiter(void 0, [_1, _a, _b], void 0, function* (_, { postId }, { prisma, userInfo }) {
+        if (!userInfo) {
+            return {
+                userErrors: [
+                    {
+                        message: "Forbidden access (unauthenticated)",
+                    },
+                ],
+                post: null,
+            };
+        }
+        const error = yield (0, canUserMutatePost_1.canUserMutatePost)({
+            userId: userInfo.userId,
+            postId,
+            prisma,
+        });
+        if (error)
+            return error;
+        return {
+            userErrors: [],
+            post: prisma.post.update({
+                where: {
+                    id: postId,
+                },
+                data: {
+                    published: true,
+                },
+            }),
+        };
+    }),
+    postUnpublish: (_1, _a, _b) => __awaiter(void 0, [_1, _a, _b], void 0, function* (_, { postId }, { prisma, userInfo }) {
+        if (!userInfo) {
+            return {
+                userErrors: [
+                    {
+                        message: "Forbidden access (unauthenticated)",
+                    },
+                ],
+                post: null,
+            };
+        }
+        const error = yield (0, canUserMutatePost_1.canUserMutatePost)({
+            userId: userInfo.userId,
+            postId,
+            prisma,
+        });
+        if (error)
+            return error;
+        return {
+            userErrors: [],
+            post: prisma.post.update({
+                where: {
+                    id: postId,
+                },
+                data: {
+                    published: false,
+                },
+            }),
+        };
+    })
 };
